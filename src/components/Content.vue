@@ -4,16 +4,16 @@
 
   <div class="bg-clouds">
 
-    <div class="container  u-ptl">
+    <div class="container  u-ptl u-plm u-prm">
 
         <div class="row">
 
-          <div class="col-sm-12 u-mtm hero-container">
+          <div class="col-sm-12 u-mtn  hero-container">
 
             <div class="title-container">
-                <h1>Optimizing the first response : Time to first byte</h1>
+                <h1>{{reco.title.rendered}}</h1>
                 <hr/>
-                <p>TTFB measures the duration from the user or client making an HTTP request to the first byte of the page being received by the client's browser</p>
+                <p>{{reco.acf.description}}</p>
             </div>
         
 
@@ -27,37 +27,10 @@
 
   </div> <!-- clouds -->
 
-  <div class="container content-container shadow u-ptm u-plm u-prm">
+  <div class="container u-pbl u-plm u-prm content-container">
     <div class="row">
 
-      <div class="col-sm-12">
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-     
-        <h2>How to check the Time To First Byte ?</h2>
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-        
-        <img src="https://speedchecklist.com/img/01-ttf.png">
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-
-
-        <h2>How to fix the issue ?</h2>
-
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-
-        <p>Lorem ipsum dolor sit met, qui at desert mandamus, adduce ullum apeirian mea at. Eu mel vide saltando vituperata, sonet quidam deterruisset te qui. Te cum vivendum explicate abhorrent. Id venom argumentum vel. Ut lorem bocent hendrerit eam. </p>
-
-
-
-      </div>
+      <div class="col-sm-12" v-html="reco.content.rendered" > </div> 
 
     </div>
   </div>
@@ -69,10 +42,9 @@
 
 <script>
 
-
-
 export default {
   name: 'my-content',
+  props: ['reco'],
   data () {
     return {
       msg: 'Welcome to Your Vue.js PWA'
@@ -84,7 +56,20 @@ export default {
 
 <style scoped>
 
-.content{background-color: #f0fefe;}
+.content{
+  background-color: #f0fefe;
+  /* position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  height: 400px; */
+}
+
+.content h1{
+  font-size: 32px;
+}
 
 .content-container{
   background-color: #FFF;
@@ -110,7 +95,7 @@ export default {
 .bg-clouds{
   background-image: url('../assets/svg/clouds-light.svg');
   height: 55vh;
-  max-height:600px; 
+  max-height: 350px;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment:fixed; 

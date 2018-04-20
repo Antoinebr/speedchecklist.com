@@ -2926,3 +2926,20 @@ h2 {
   text-rendering: optimizeLegibility;
   font-size: 22px;
 }
+
+/* line 1, ../../sass/website/_serie.scss */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity  1s, transform 0.7s;
+}
+
+/* line 7, ../../sass/website/_serie.scss */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(800px);
+}
+
+/* line 12, ../../sass/website/_serie.scss */
+.fade-leave-active {
+  opacity: 0;
+  transform: translateY(100px);
+}

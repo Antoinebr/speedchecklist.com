@@ -7,7 +7,7 @@
 
           <div class="col-sm-12">
 
-            <h2 class="u-mbn u-pbn u-txtCenter"> What to check and how to fix the issue</h2>
+            <h2 class="u-mbn u-pbn u-txtCenter"> What to check and how to fix the issues</h2>
             <p class="u-txtCenter"> Let’s fix issues with the “stack overflow” way to do it </p>
 
           </div>
@@ -25,32 +25,11 @@
 
             <div class="col-sm-3 align">Title</div>
         </header>
-      
-      <reco/>
 
-      <reco/>
 
-      <reco/>
+      <reco v-for="(recomendation,index) in recomendations" :reco="recomendation,categories,index" :key="recomendation.id" />
 
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-      <reco/>
-
-  
+ 
 
     </div> <!-- container -->
 
@@ -59,6 +38,7 @@
 
 <script>
 import reco from './reco.vue';
+import {getPosts,getCategories} from '../../api/api.js';
 export default {
     name: 'recomendations',
     components:{
@@ -66,11 +46,34 @@ export default {
     },
      data(){
         return{
-            myData : ""
+            myData : "",
+            recomendations : null,
+            categories: null,
         }
     },
+
+    methods:{
+
+
+ 
+
+    },
+
+
+    created(){
+
+
+      getPosts().then( r => this.recomendations = r);
+
+      getCategories().then( c => this.categories = c);
+
+
+  }
+
+   
 }
 </script>
+
 
 
 <style scoped>

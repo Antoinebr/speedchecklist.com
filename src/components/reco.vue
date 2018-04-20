@@ -1,41 +1,74 @@
 <template>
     <div>
+        <article class="row" v-if="reco && categories">
 
-        <article class="row">
+            <div class="col-sm-1"> <div class="number">{{index+1}}</div> </div>
 
-            <div class="col-sm-1"> <div class="number">1</div> </div>
+            <div class="col-sm-1">
+                
+                <my-icon class="icon" :type="categorieName" />
+            </div>
 
-            <div class="col-sm-1"><img class="icon icon-js" src="../assets/svg/icon-js.svg"></div>
+            <div class="col-sm-1"> <span class="tag">{{reco.acf.complexity}}</span> </div>
 
-            <div class="col-sm-1"> <span class="tag">hard </span> </div>
+            <div class="col-sm-3 align title">{{reco.title.rendered}}</div>
 
-            <div class="col-sm-3 align title">Does the website load acarousel/slider above the fold?</div>
+            <div class="col-sm-4 align intro">{{shortDesc}}</div>
 
-            <div class="col-sm-4 align intro">If the website load a carousel / slider Above the fold (ATF), the content ATF will need to wait for</div>
-
-            <div class="col-sm-2 btn-container u-pls"><a href="#/content" @click="showContent()" class="button button--circular">see more</a></div>
+            <div class="col-sm-2 btn-container u-pls">
+                <button  @click="content = !content" class="button button--circular">
+                    <span v-if="!content">see more</span>
+                    <span v-else>see less</span>
+                </button>
+            </div>
 
         </article>
 
-        <my-content/>
+        <div class="row">
+            <transition name="fade">  <my-content v-if="content" :reco="reco" /> </transition>
+        </div>
+     
+        <div style="margin-bottom: 15px;"></div>
 
     </div>
 </template>
 
 <script>
+import  myIcon from './icon';
 import  myContent from './Content';
+import find from 'lodash/find';
+import truncate from 'lodash/truncate';
+
 export default {
     name: 'reco',
+    props : ['reco','categories','index'],
      components: {
-        'my-content' : myContent
+        'my-content' : myContent,
+        'my-icon' : myIcon,
     },
  
-    methods:{
+    data(){
+        return{
+            content : false
+        }
+    },
 
-       
+    computed: {
+        
+        categorieName(){
 
+            const categorie = find(this.categories, ['id', this.reco.categories[0]] );
 
-    }
+            return categorie.name;
+            
+        },
+
+        shortDesc(){
+
+            return truncate(this.reco.acf.description,{'length': 90})
+
+        }
+    },
 }
 </script>
 
@@ -47,7 +80,6 @@ article{
     height: 100px;
     padding: 20px;
     line-height: 60px;
-    margin-bottom: 15px;
 }
 
 .align{

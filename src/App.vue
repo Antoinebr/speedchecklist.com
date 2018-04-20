@@ -17,15 +17,7 @@
 
 <script>
 export default { 
-  name: 'app',
-  data:{
-    isFixed : false,
-  },
-  methods:{
-
-
-
-  }
+  name: 'app'
 }
 </script>
 
