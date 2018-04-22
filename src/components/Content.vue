@@ -27,11 +27,12 @@
   </div> <!-- clouds -->
 
   <div class="container u-pbl u-plm u-prm u-xs-pls u-xs-prs content-container">
+
+
     <div class="row">
-
       <div class="col-sm-12" v-html="reco.content.rendered" > </div> 
-
     </div>
+
   </div>
 
 
@@ -70,40 +71,6 @@ export default {
 
 
 <style scoped>
-
-.content{
-  background-color: #f0fefe;
-}
-
-.content h1{
-  font-size: 32px;
-}
-
-.content-container{
-  background-color: #FFF;
-  font-size: 17px;
-  color:#5a6367;
-  line-height: 30px;
-}
-
-.content-container h2{
-  font-size: 29px;
-  margin-top: 40px;
-}
-
-.content-container img{
-  box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
-  display:block;
-  margin:auto;
-  max-width: 100%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.content-container ul,ol li {
-  line-height: 38px;
-}
-
 
 /* .content-container code{
  

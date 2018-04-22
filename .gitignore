@@ -13,3 +13,7 @@ yarn-error.log*
 *.sln
 
 .sass-cache
+
+/img/
+
+dploy.sh
