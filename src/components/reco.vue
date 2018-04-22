@@ -1,22 +1,21 @@
 <template>
     <div>
-        <article class="row" v-if="reco && categories">
+        <article class="row" v-if="reco" @click="showMobile()">
 
-            <div class="col-sm-1"> <div class="number">{{index+1}}</div> </div>
+            <div class="col-sm-1 col-xs-2 col-xs-pull-1"> <div class="number">{{index+1}}</div> </div>
 
-            <div class="col-sm-1">
-                
-                <my-icon class="icon" :type="categorieName" />
+            <div class="col-sm-1 hidden-xs hidden-sm">            
+                <my-icon class="icon" :type="reco._embedded['wp:term'][0][0].name" />
             </div>
 
-            <div class="col-sm-1"> <span class="tag">{{reco.acf.complexity}}</span> </div>
+            <div class="col-sm-1 col-xs-3 col-xs-push-8"> <span class="tag">{{reco.acf.complexity}}</span> </div>
 
-            <div class="col-sm-3 align title">{{reco.title.rendered}}</div>
+            <div class="col-sm-3 col-xs-7 col-xs-pull-3 align title">{{reco.title.rendered}}</div>
 
-            <div class="col-sm-4 align intro">{{shortDesc}}</div>
+            <div class="col-sm-4 hidden-xs align intro">{{shortDesc}}</div>
 
-            <div class="col-sm-2 btn-container u-pls">
-                <button  @click="content = !content" class="button button--circular">
+            <div class="col-sm-2 hidden-xs btn-container u-pls">
+                <button  @click="show()" class="button button--circular">
                     <span v-if="!content">see more</span>
                     <span v-else>see less</span>
                 </button>
@@ -25,11 +24,12 @@
         </article>
 
         <div class="row">
-            <transition name="fade">  <my-content v-if="content" :reco="reco" /> </transition>
+            <transition name="fade"> 
+                <my-content v-if="content" :reco="reco" v-bind:slug="reco.slug" /> 
+            </transition>
         </div>
      
-        <div style="margin-bottom: 15px;"></div>
-
+        <div class="spacer"></div>
     </div>
 </template>
 
@@ -41,7 +41,7 @@ import truncate from 'lodash/truncate';
 
 export default {
     name: 'reco',
-    props : ['reco','categories','index'],
+    props : ['reco','index'],
      components: {
         'my-content' : myContent,
         'my-icon' : myIcon,
@@ -53,15 +53,27 @@ export default {
         }
     },
 
+    methods:{
+
+        show(){
+
+            this.content = !this.content;
+                
+            setTimeout( () => VueScrollTo.scrollTo( `[slug='${this.reco.slug}']` , 800, VueScollToOptions) ,300);
+
+            window.location.hash = `/tips/${this.reco.slug}`;
+   
+
+        },
+
+        showMobile(){
+
+            if (window.innerWidth <= 765) this.show();
+        }
+
+    },
     computed: {
         
-        categorieName(){
-
-            const categorie = find(this.categories, ['id', this.reco.categories[0]] );
-
-            return categorie.name;
-            
-        },
 
         shortDesc(){
 
@@ -69,6 +81,15 @@ export default {
 
         }
     },
+
+
+    mounted(){
+            
+        let hash = window.location.hash;
+       
+        if (this.$route.params.hash === this.reco.slug ) this.show();
+
+    }
 }
 </script>
 
@@ -95,9 +116,19 @@ article{
   font-size: 15px;
 }
 
-.btn-container .button{
-    padding-left: 2.75em !important;
-    padding-right: 2.75em !important;
+
+
+@media only screen and (min-width: 990px){
+        
+    .btn-container .button{
+        padding-left: 2.75em !important;
+        padding-right: 2.75em !important;
+    }   
+        
+}
+
+.spacer{
+    margin-top: 15px;
 }
 
 .icon{
@@ -130,5 +161,24 @@ article{
     font-weight: bold;
     line-height: 40px;
 }
+
+
+@media only screen and (max-width: 992px){
+    	
+    article{
+        height: 115px;
+        border-bottom: #5b626524 1px solid;
+        margin-bottom: 0px;
+        padding-bottom: 15px;
+    }
+
+    .spacer{
+           margin-top: 0px;
+    }
+}
+
+
+
+
 </style>
 

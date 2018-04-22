@@ -104,7 +104,27 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
-      stripPrefix: 'dist/'
+      stripPrefix: 'dist/',
+      runtimeCaching: [
+        {
+          urlPattern:  new RegExp('^https://speedchecklist.com/api/wp-json/'),
+          handler: "networkFirst",
+          options: {
+            cache: {
+              name: 'content-cache'
+            }
+          }
+        },
+        {
+          urlPattern:  new RegExp('^https://speedchecklist.com/img/'),
+          handler: "cacheFirst",
+          options: {
+            cache: {
+              name: 'image-cache'
+            }
+          }
+        },
+      ],
     })
   ]
 })

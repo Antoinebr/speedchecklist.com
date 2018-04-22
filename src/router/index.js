@@ -4,6 +4,12 @@ import Home from '@/Home'
 import Content from '@/components/Content'
 import Recos from '@/components/recomendations'
 
+// import { MdButton } from 'vue-material/dist/components'
+// import 'vue-material/dist/vue-material.min.css'
+
+// Vue.use(MdButton)
+
+ 
 Vue.use(Router)
 
 export default new Router({
@@ -13,6 +19,17 @@ export default new Router({
       name: 'Home',
       component: Home
     },
+    {
+      path: '/filters/:filter',
+      name: 'Filters',
+      component: Home
+    },
+    {
+      path: '/tips/:hash',
+      name: 'Tips',
+      component: Home
+    },
+    
     {
       path: '/recos',
       name: 'Recos',
@@ -26,3 +43,4 @@ export default new Router({
 
   ]
 })
+

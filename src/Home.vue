@@ -14,7 +14,7 @@
             <h1 class="u-mbn">Speed checklist</h1>
             <h2 class="u-mbm"> <span>Webperformance</span> made simple</h2>
 
-            <a href="#/recos" class="button button--circular"> speed-up my site </a>
+            <button class="button button--circular" @click="goReco()"> speed-up my site </button>
             <!-- <router-link to="Recos" class="button button--circular" >speed-up my site</router-link> -->
 
             <img class="jet" src="./assets/svg/jet.svg">
@@ -39,7 +39,17 @@ export default {
   components:{
       'recomendations' : recomendations
   },
-  name: 'Home'
+  name: 'Home',
+  methods:{
+
+
+    goReco(){
+
+      setTimeout( () => VueScrollTo.scrollTo( '.recos', 800,  {offset: 0} ) ,300);
+
+    }
+
+  }
 }
 </script>
 
@@ -50,6 +60,7 @@ export default {
 .bg-clouds{
   background-image: url('./assets/svg/clouds.svg');
   height: 33vw;
+  min-height: 450px;
   max-height:600px; 
   background-repeat: no-repeat;
   background-size: cover;

@@ -7,77 +7,12 @@ const API_URL = "https://speedchecklist.com/api/";
 
 export const getPosts = () => {
 
-    return  fetch(`${API_URL}/wp-json/wp/v2/posts?wpse_custom_order=menu_order&order=asc&per_page=20`)
+    return  fetch(`${API_URL}/wp-json/wp/v2/posts?wpse_custom_order=menu_order&order=asc&per_page=20&_embed`)
     .then( (response) => response.json() )
     .then( (res) => {
 
         return res;
 
     }).catch( (err) => console.log(res) );
-
-}
-
-export const getCategories =  () => {
-
-
-    return  fetch(`${API_URL}/wp-json/wp/v2/categories`)
-    .then( (response) => response.json() )
-    .then( (res) => {
-
-        return  res.filter( c =>  c.slug !== "uncategorized" && c.count > 0  && c.slug !== "non-classe" );
-
-    }).catch( (err) => console.log(res) );
-  
-}
-
-
-export const getTags = () => {
-
-    return fetch(`${API_URL}/wp-json/wp/v2/tags?per_page=100`)
-    .then( (response) => response.json() )
-    .then( (res) => {
-  
-        return res; 
-    
-    }).catch( (err) => console.log(res) );
-     
-}
-
-
-export const getScreenshots = (type = 'categories', id) => {
-
-    return fetch(`${API_URL}/wp-json/wp/v2/media?${ type }=${ id }&per_page=100`)
-    .then( (response) => response.json() )
-    .then( (res) => {
-      
-        return res; 
-
-     }).catch( (err) => console.log(res) );
-
-}
-
-
-export const getScreenshot = (id) => {
-
-    return fetch(`${API_URL}/wp-json/wp/v2/media?include=${ id }`)
-    .then( (response) => response.json() )
-    .then( (res) => {
-      
-        return res; 
-
-     }).catch( (err) => console.log(res) );
-
-}
-
-
-export const getScreenshotBySlug = (slug) => {
-
-    return fetch(`${API_URL}/wp-json/wp/v2/media?slug=${ slug }`)
-    .then( (response) => response.json() )
-    .then( (res) => {
-      
-        return res; 
-
-     }).catch( (err) => console.log(res) );
 
 }

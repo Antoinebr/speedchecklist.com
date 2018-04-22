@@ -1,5 +1,5 @@
 {
-  "name": "speechecklist",
+  "name": "speedchecklist",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "antoinebr",
@@ -12,7 +12,10 @@
   "dependencies": {
     "lodash": "^4.17.5",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-material": "^1.0.0-beta-7",
+    "vue-router": "^3.0.1",
+    "vue-scrollto": "^2.11.0",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
