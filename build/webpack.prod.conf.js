@@ -108,7 +108,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       runtimeCaching: [
         {
           urlPattern:  new RegExp('^https://speedchecklist.com/api/wp-json/'),
-          handler: "cacheFirst",
+          handler: "fastest",
           options: {
             cache: {
               name: 'content-cache'
