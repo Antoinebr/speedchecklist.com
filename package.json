@@ -5,10 +5,11 @@
   "author": "antoinebr",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "node build/dev-server.js && compass watch",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "serve": "php -S localhost:4343 -t dist/"
+    "serve": "php -S localhost:4343 -t dist/",
+    "dploy": "bash dploy.sh"
   },
   "dependencies": {
     "lodash": "^4.17.5",
