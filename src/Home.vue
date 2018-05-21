@@ -15,8 +15,7 @@
             <h2 class="u-mbm"> <span>Webperformance</span> made simple</h2>
 
             <button class="button button--circular" @click="goReco()"> speed-up my site </button>
-            <!-- <router-link to="Recos" class="button button--circular" >speed-up my site</router-link> -->
-
+            
             <img class="jet" src="./assets/svg/jet.svg">
            
           </div> <!-- col- -->

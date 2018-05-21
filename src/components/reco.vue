@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="reco">
         <article class="row" v-if="reco" @click="showMobile()">
 
             <div class="col-sm-1 col-xs-2 col-xs-pull-1"> <div class="number">{{index+1}}</div> </div>
@@ -25,10 +25,12 @@
 
         <div class="row">
             <transition name="fade"> 
-                <my-content v-if="content" :reco="reco" v-bind:slug="reco.slug" /> 
+                <my-content v-if="content" :reco="reco" v-bind:slug="reco.slug"> 
+                    <!-- <div class="close">X</div>  -->
+                </my-content>
             </transition>
         </div>
-     
+
         <div class="spacer"></div>
     </div>
 </template>
@@ -116,6 +118,19 @@ article{
   font-size: 15px;
 }
 
+.reco{
+    position: relative;
+}
+
+.reco .close{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.btn-container button{
+    min-width: 140px;
+}
 
 
 @media only screen and (min-width: 990px){
@@ -133,7 +148,7 @@ article{
 
 .icon{
     width: 40px;
-    padding-top:13px;
+    padding-top:2px;
 }
 
 .tag{
@@ -160,6 +175,10 @@ article{
     font-size: 25px;
     font-weight: bold;
     line-height: 40px;
+}
+
+.close{
+
 }
 
 
